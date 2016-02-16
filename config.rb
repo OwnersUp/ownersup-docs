@@ -13,7 +13,7 @@ set :partials_dir, '_partials'
 page "/faq/*/*", :layout => "article"
 
 set :markdown_engine, :redcarpet
-set :markdown, :tables => true, :autolink => true, :gh_blockcode => true, :fenced_code_blocks => true, with_toc_data: true
+set :markdown, :strikethrough => true, :tables => true, :autolink => true, :gh_blockcode => true, :fenced_code_blocks => true, with_toc_data: true
 
 activate :views
 activate :directory_indexes
@@ -31,7 +31,17 @@ configure :build do
   activate :minify_css
   activate :minify_javascript
   activate :minify_html
-  activate :asset_hash
+  activate :asset_hash, :exts => %w(.png .jpg .gif .css .js)
+
+  # Compress and optimise images during build
+  # Documentation: https://github.com/plasticine/middleman-imageoptim
+  activate :imageoptim do |options|
+    # Image extensions to attempt to compress
+    options.image_extensions = %w(.png .jpg .gif .svg)
+    # Cause image_optim to be in shouty-mode
+    options.verbose = false
+  end
+
 end
 
 activate :deploy do |deploy|

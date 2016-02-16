@@ -3,8 +3,11 @@
     - if current_page.data.title
       .page-header
         - category = data.categories[current_page.data.category]
-        .back=link_to "Back to #{category.name}", "/faq/#{current_page.data.category}"
-        h4.text-capitalize="#{category.name} Questions"
+        .back=link_to "All Categories", "/faq/"
+        h4.text-capitalize
+          = link_to "FAQ", "/faq/"
+          |  > 
+          =category.name
         h1=current_page.data.title
     .row
       article.col-md-7

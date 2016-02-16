@@ -7,3 +7,9 @@ referral-program:
 wrapup:
   name: WrapUps
   description: Information about accomplishments, lessons and why it all matters
+goal:
+  name: Goals
+  description: Information about setting up and completing goals
+tallyup:
+  name: TallyUps
+  description: Keeping track of your revenue goals
